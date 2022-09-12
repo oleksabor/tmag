@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tmag/classes/init_get.dart';
 
 void main() {
+  configureDependencies();
   runApp(const MyApp());
 }
 
