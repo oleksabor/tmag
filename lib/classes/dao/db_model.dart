@@ -3,10 +3,12 @@ import 'package:async/async.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:tmag/classes/dao/day_unit.dart';
 import 'package:tmag/classes/dao/resource.dart';
 import 'package:tmag/classes/dao/time.dart';
 import 'package:tmag/classes/dao/time_unit.dart';
 import 'package:tmag/classes/dao/work_type.dart';
+import 'package:tmag/classes/dao/work_unit.dart';
 
 @singleton
 class DbModel {
@@ -44,6 +46,17 @@ class DbModel {
   Future<bool> checkHive(String path) async {
     var exists = await Directory(path).exists();
     return exists;
+  }
+
+  Future<TValue> save<TValue extends HiveObject>(
+      Future<Box<TValue>> box, TValue value) async {
+    if (value.isInBox) {
+      await value.save();
+    } else {
+      (await box).add(value);
+    }
+
+    return value;
   }
 
   bool _initialized = false;
