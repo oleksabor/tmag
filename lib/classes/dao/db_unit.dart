@@ -10,8 +10,9 @@ import 'package:tmag/classes/dao/time_unit.dart';
 import 'package:tmag/classes/dao/work_type.dart';
 import 'package:tmag/classes/dao/work_unit.dart';
 
+/// singleton unit of work
 @singleton
-class DbModel {
+class DbUnit {
   final _initDBMemoizer = AsyncMemoizer();
   Stream<String> getDbFolders() async* {
     var d1 = await getApplicationDocumentsDirectory();
@@ -61,6 +62,7 @@ class DbModel {
 
   bool _initialized = false;
 
+  /// initializes hive objects adapters
   Future init() async {
     if (!_initialized) {
       var hiveDb = await findDbFile(getDbFolders());

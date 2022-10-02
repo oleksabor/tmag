@@ -1,28 +1,28 @@
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
-import 'package:tmag/classes/dao/db_model.dart';
+import 'package:tmag/classes/dao/db_box_model.dart';
+import 'package:tmag/classes/dao/db_unit.dart';
 import 'package:tmag/classes/dao/resource.dart';
 
 @injectable
-class ResourceModel {
-  final DbModel _db;
+class ResourceModel extends DbBoxModel<Resource> {
+  @override
+  String boxName = "resourcesBox";
 
-  final resourcesName = "resourcesBox";
+  ResourceModel(DbUnit db) : super(db);
+}
 
-  ResourceModel(this._db);
+class ResourceModelFake extends ResourceModel {
+  ResourceModelFake(DbUnit db) : super(db);
 
-  late Future<Box<Resource>> resources = _db.openBox<Resource>(resourcesName);
+  List<Resource> items = [
+    Resource()..title = "test1",
+    Resource()..title = "test2",
+    Resource()..title = "test3",
+  ];
 
+  @override
   Future<List<Resource>> loadAll() async {
-    return (await resources).values.toList();
-  }
-
-  Future<Resource> save(Resource value) async {
-    return _db.save(resources, value);
-  }
-
-  /// flushes data
-  Future commit() async {
-    (await resources).flush();
+    // TODO: implement loadAll
+    return items;
   }
 }
