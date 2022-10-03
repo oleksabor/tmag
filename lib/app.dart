@@ -60,9 +60,8 @@ class _AppViewState extends State<AppView> {
                 );
                 break;
               case NavigationPageStatus.resources:
-                _navigator.pushAndRemoveUntil<void>(
+                _navigator.push<void>(
                   ResourcesView.route(),
-                  (route) => false,
                 );
                 break;
             }
