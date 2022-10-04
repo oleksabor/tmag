@@ -22,7 +22,6 @@ class ResourceModelFake extends ResourceModel {
 
   @override
   Future<List<Resource>> loadAll() async {
-    // TODO: implement loadAll
     return items;
   }
 }
