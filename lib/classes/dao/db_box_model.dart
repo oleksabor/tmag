@@ -19,6 +19,10 @@ abstract class DbBoxModel<T extends HiveObject> {
     return _db.save(resources, value);
   }
 
+  Future<void> delete(T value) async {
+    await _db.delete(value);
+  }
+
   /// flushes data
   Future commit() async {
     (await resources).flush();

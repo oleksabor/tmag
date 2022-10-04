@@ -49,6 +49,12 @@ class DbUnit {
     return exists;
   }
 
+  Future<void> delete<TValue extends HiveObject>(TValue value) async {
+    if (value.isInBox) {
+      await value.delete();
+    }
+  }
+
   Future<TValue> save<TValue extends HiveObject>(
       Future<Box<TValue>> box, TValue value) async {
     if (value.isInBox) {
