@@ -23,11 +23,7 @@ class CrudViewState extends State<ResourcesView> {
   @override
   void initState() {
     super.initState();
-    var dbc = getIt.get<ResourceModel>();
-    items = dbc.loadAll();
   }
-
-  late Future<List<Resource>> items;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +45,26 @@ class CrudViewState extends State<ResourcesView> {
     var presentation = ListItemsPresenter();
     var model = RepositoryProvider.of<ResourceModel>(context);
     return Column(children: [
+      Row(children: [
+        createIcon(Icons.add, "add", () {}),
+        createIcon(Icons.edit, "edit", () {}),
+        createIcon(Icons.delete, "delete", () {}),
+      ]),
       Flexible(flex: 9, child: presentation.create(model.loadAll()))
     ]);
+  }
+
+  Widget createIcon(
+      IconData icon, String semanticLabel, void Function() onPressed) {
+    return IconButton(
+      onPressed: () => onPressed(),
+      icon: Icon(
+        semanticLabel: semanticLabel,
+        icon,
+        //color: Theme.of(context).secondaryHeaderColor,
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 18.0),
+      color: Theme.of(context).iconTheme.color,
+    );
   }
 }
