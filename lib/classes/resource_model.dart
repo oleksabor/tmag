@@ -15,9 +15,14 @@ class ResourceModelFake extends ResourceModel {
   ResourceModelFake(DbUnit db) : super(db);
 
   List<Resource> items = [
-    Resource()..title = "test1",
-    Resource()..title = "test2",
-    Resource()..title = "test3",
+    Resource()..title = "worker1",
+    Resource()..title = "worker2",
+    Resource()..title = "worker3",
+    Resource()..title = "worker4",
+    Resource()..title = "worker5",
+    Resource()..title = "worker6",
+    Resource()..title = "worker7",
+    Resource()..title = "worker8",
   ];
 
   @override
