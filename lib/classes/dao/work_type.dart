@@ -10,4 +10,7 @@ part 'work_type.g.dart';
 class WorkType extends DbHiveObject {
   @HiveField(0)
   String title = "";
+
+  @HiveField(1)
+  bool isWorking = true;
 }
