@@ -1,7 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tmag/classes/dao/db_hive_object.dart';
 import 'package:tmag/classes/dao/hive_types.dart';
-import 'package:tmag/classes/dao/time_unit.dart';
+import 'package:tmag/classes/dao/work_unit.dart';
 
 part 'day_unit.g.dart';
 
@@ -9,7 +9,7 @@ part 'day_unit.g.dart';
 @HiveType(typeId: HiveTypes.dayUnit)
 class DayUnit extends DbHiveObject {
   @HiveField(0)
-  List<TimeUnit> times = <TimeUnit>[];
+  List<WorkUnit> items = <WorkUnit>[];
   @HiveField(1)
   DateTime day;
   DayUnit(this.day);

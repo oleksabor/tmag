@@ -18,8 +18,8 @@ class WorkUnitAdapter extends TypeAdapter<WorkUnit> {
     };
     return WorkUnit(
       fields[0] as TimeUnit,
-      fields[1] as Resource,
-      fields[2] as WorkType,
+      fields[2] as int,
+      resId: fields[1] as int?,
     );
   }
 
@@ -30,9 +30,9 @@ class WorkUnitAdapter extends TypeAdapter<WorkUnit> {
       ..writeByte(0)
       ..write(obj.time)
       ..writeByte(1)
-      ..write(obj.res)
+      ..write(obj.resId)
       ..writeByte(2)
-      ..write(obj.type);
+      ..write(obj.typeId);
   }
 
   @override

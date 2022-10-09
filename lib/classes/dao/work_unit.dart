@@ -14,12 +14,13 @@ class WorkUnit extends DbHiveObject {
   @HiveField(0)
   TimeUnit time;
 
-  /// resource assigned
+  /// resource assigned [Resource]
   @HiveField(1)
-  Resource res;
+  int? resId;
 
-  /// type of the task
+  /// type of the task [WorkType]
   @HiveField(2)
-  WorkType type;
-  WorkUnit(this.time, this.res, this.type);
+  int typeId;
+
+  WorkUnit(this.time, this.typeId, {this.resId});
 }

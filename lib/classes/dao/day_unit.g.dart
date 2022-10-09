@@ -18,7 +18,7 @@ class DayUnitAdapter extends TypeAdapter<DayUnit> {
     };
     return DayUnit(
       fields[1] as DateTime,
-    )..times = (fields[0] as List).cast<TimeUnit>();
+    )..items = (fields[0] as List).cast<WorkUnit>();
   }
 
   @override
@@ -26,7 +26,7 @@ class DayUnitAdapter extends TypeAdapter<DayUnit> {
     writer
       ..writeByte(2)
       ..writeByte(0)
-      ..write(obj.times)
+      ..write(obj.items)
       ..writeByte(1)
       ..write(obj.day);
   }
