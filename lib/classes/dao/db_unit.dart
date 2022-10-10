@@ -3,6 +3,7 @@ import 'package:async/async.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:tmag/classes/dao/calendar.dart';
 import 'package:tmag/classes/dao/day_unit.dart';
 import 'package:tmag/classes/dao/resource.dart';
 import 'package:tmag/classes/dao/time.dart';
@@ -81,7 +82,7 @@ class DbUnit {
         Hive.registerAdapter(WorkUnitAdapter());
         Hive.registerAdapter(TimeUnitAdapter());
         Hive.registerAdapter(DayUnitAdapter());
-        // Hive.registerAdapter(ConfigLogAdapter());
+        Hive.registerAdapter(CalendarAdapter());
         // Hive.registerAdapter(ConfigNotifyAdapter());
       });
       _initialized = true;
