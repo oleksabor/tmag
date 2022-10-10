@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:tmag/classes/dao/calendar.dart';
 import 'package:tmag/classes/dao/day_unit.dart';
 import 'package:tmag/classes/dao/resource.dart';
+import 'package:tmag/classes/dao/template.dart';
 import 'package:tmag/classes/dao/time.dart';
 import 'package:tmag/classes/dao/time_unit.dart';
 import 'package:tmag/classes/dao/work_type.dart';
@@ -83,7 +84,7 @@ class DbUnit {
         Hive.registerAdapter(TimeUnitAdapter());
         Hive.registerAdapter(DayUnitAdapter());
         Hive.registerAdapter(CalendarAdapter());
-        // Hive.registerAdapter(ConfigNotifyAdapter());
+        Hive.registerAdapter(TemplateAdapter());
       });
       _initialized = true;
     }

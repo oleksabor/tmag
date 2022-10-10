@@ -6,4 +6,5 @@ class HiveTypes {
   static const int dayUnit = 5;
   static const int calendar = 6;
   static const int resource = 7;
+  static const int template = 8;
 }

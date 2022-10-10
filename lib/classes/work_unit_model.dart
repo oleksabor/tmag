@@ -29,9 +29,9 @@ class WorkUnitModelFake extends WorkUnitModel {
     getWorkUnit(3, 0, 3),
     //second
     getWorkUnit(0, 1, 4),
-    getWorkUnit(0, 1, 5),
-    getWorkUnit(0, 1, 6),
-    getWorkUnit(0, 1, 7),
+    getWorkUnit(1, 1, 5),
+    getWorkUnit(2, 1, 6),
+    getWorkUnit(3, 1, 7),
 
     //vacation
     getWorkUnit(10, 6, 8),

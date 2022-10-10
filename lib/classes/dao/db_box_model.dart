@@ -9,14 +9,14 @@ abstract class DbBoxModel<T extends HiveObject> {
 
   DbBoxModel(this._db);
 
-  late Future<Box<T>> resources = _db.openBox<T>(boxName);
+  late Future<Box<T>> box = _db.openBox<T>(boxName);
 
   Future<List<T>> loadAll() async {
-    return (await resources).values.toList();
+    return (await box).values.toList();
   }
 
   Future<T> save(T value) async {
-    return _db.save(resources, value);
+    return _db.save(box, value);
   }
 
   Future<void> delete(T value) async {
@@ -25,6 +25,6 @@ abstract class DbBoxModel<T extends HiveObject> {
 
   /// flushes data
   Future commit() async {
-    (await resources).flush();
+    (await box).flush();
   }
 }
