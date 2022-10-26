@@ -42,6 +42,8 @@ class CrudViewState extends CrudItemsView<ResourcesView> {
                 builder: resourcesUI)));
   }
 
+  var presentation = ListItemsPresenter();
+
   Widget resourcesUI(BuildContext con, ResourceState st) {
     var model = RepositoryProvider.of<ResourceModel>(context);
     return items2UI(con, model.loadAll());
