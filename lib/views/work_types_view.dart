@@ -2,25 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tmag/classes/dao/resource.dart';
 import 'package:tmag/classes/init_get.dart';
-import 'package:tmag/classes/resource_bloc.dart';
-import 'package:tmag/classes/resource_model.dart';
+import 'package:tmag/classes/work_type_bloc.dart';
+import 'package:tmag/classes/work_type_model.dart';
 import 'package:tmag/views/crud_items_view.dart';
-import 'package:tmag/views/list_items_presenter.dart';
 
-class ResourcesView extends StatefulWidget {
-  const ResourcesView({Key? key}) : super(key: key);
+class WorkTypesView extends StatefulWidget {
+  const WorkTypesView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return CrudViewState();
+    return WorkTypesCrudViewState();
   }
 
   static Route<void> route() {
-    return MaterialPageRoute<void>(builder: (_) => const ResourcesView());
+    return MaterialPageRoute<void>(builder: (_) => const WorkTypesView());
   }
 }
 
-class CrudViewState extends CrudItemsView<ResourcesView> {
+class WorkTypesCrudViewState extends CrudItemsView<WorkTypesView> {
   @override
   void initState() {
     super.initState();
@@ -30,20 +29,20 @@ class CrudViewState extends CrudItemsView<ResourcesView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("resources"),
+          title: Text("types"),
         ),
         body: BlocProvider(
             create: (context) {
               var b =
-                  ResourceBloc(RepositoryProvider.of<ResourceModel>(context));
+                  WorkTypeBloc(RepositoryProvider.of<WorkTypeModel>(context));
               return b;
             },
-            child: BlocBuilder<ResourceBloc, ResourceState>(
+            child: BlocBuilder<WorkTypeBloc, WorkTypeState>(
                 builder: resourcesUI)));
   }
 
-  Widget resourcesUI(BuildContext con, ResourceState st) {
-    var model = RepositoryProvider.of<ResourceModel>(context);
+  Widget resourcesUI(BuildContext con, WorkTypeState st) {
+    var model = RepositoryProvider.of<WorkTypeModel>(context);
     return items2UI(con, model.loadAll());
   }
 }

@@ -5,23 +5,31 @@ import 'package:tmag/navigation_bloc.dart';
 import 'package:tmag/views/home_page.dart';
 import 'package:tmag/views/resources_view.dart';
 import 'package:tmag/views/splash_page.dart';
+import 'package:tmag/views/work_types_view.dart';
+import 'package:tmag/classes/work_type_model.dart';
 
 class App extends StatelessWidget {
   const App({
     super.key,
     required this.resourcesRepository,
+    required this.workTypesRepository,
   });
 
   final ResourceModel resourcesRepository;
+  final WorkTypeModel workTypesRepository;
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider.value(
-      value: resourcesRepository,
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(create: (_) => resourcesRepository),
+        RepositoryProvider(create: (_) => workTypesRepository),
+      ],
       child: BlocProvider(
         create: (_) {
           var nb = NavigationBloc(
             resourcesRepository,
+            workTypesRepository,
           );
           nb.add(NavigationOccuredEvent(NavigationPageStatus.home));
           return nb;
@@ -62,6 +70,11 @@ class _AppViewState extends State<AppView> {
               case NavigationPageStatus.resources:
                 _navigator.push<void>(
                   ResourcesView.route(),
+                );
+                break;
+              case NavigationPageStatus.workTypes:
+                _navigator.push<void>(
+                  WorkTypesView.route(),
                 );
                 break;
             }
