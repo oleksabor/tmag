@@ -27,8 +27,16 @@ class HomePage extends StatelessWidget {
             ),
             ElevatedButton(
               child: const Text('resources'),
+              style: ElevatedButton.styleFrom(padding: EdgeInsets.all(10)),
               onPressed: () {
                 context.read<NavigationBloc>().add(NavigationResourcesEvent());
+              },
+            ),
+            ElevatedButton(
+              child: const Text('types'),
+              style: ElevatedButton.styleFrom(padding: EdgeInsets.all(10)),
+              onPressed: () {
+                context.read<NavigationBloc>().add(NavigationWorkTypesEvent());
               },
             ),
           ],

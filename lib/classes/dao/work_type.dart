@@ -7,10 +7,15 @@ part 'work_type.g.dart';
 
 /// work type for [WorkUnit]
 @HiveType(typeId: HiveTypes.workType)
-class WorkType extends DbHiveObject {
+class WorkType extends DbHiveTitle {
   @HiveField(0)
+  @override
   String title = "";
 
   @HiveField(1)
   bool isWorking = true;
+
+  @HiveField(2)
+  @override
+  String subTitle = "";
 }
